@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+</head>
+<body>
+    <h1>My Blog</h1>
+
+    <h2>Latest Posts</h2>
+
+    {% for post in posts %}
+        <div style="margin-bottom: 30px;">
+            <a href="{% url 'detail' post.id %}">
+                <h3>{{ post.title }}</h3>
+            </a>
+            <p><strong>Published on:</strong> {{ post.public_date }}</p>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" width="200">
+            {% endif %}
+            <p>{{ post.summary }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
